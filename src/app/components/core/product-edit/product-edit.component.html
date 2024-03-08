@@ -1,0 +1,43 @@
+<<div class="container mt-5">
+  <h2>Edit Product</h2>
+  <form [formGroup]="editForm" (submit)="onSubmit($event)">
+    <div class="mb-3">
+      <label for="productId" class="form-label">Product ID</label>
+      <input type="text" class="form-control" id="productId" name="productId" readonly formControlName="productId">
+    </div>
+    <div class="mb-3">
+      <label for="productName" class="form-label">Product Name</label>
+      <input type="text" class="form-control" id="productName" name="productName" required formControlName="productName">
+      <div *ngIf="editForm.get('productName')?.hasError('required')" class="text-danger">Product Name is required</div>
+    </div>
+      <div class="mb-3">
+          <label for="productDescription" class="form-label">Product Description</label>
+          <textarea class="form-control" id="productDescription" name="productDescription" rows="3" required formControlName="productDescription"></textarea>
+          <div *ngIf="editForm.get('productDescription')?.hasError('required')" class="text-danger">Product Description is required</div>
+      </div>
+      <div class="mb-3">
+          <label for="productPrice" class="form-label">Product Price</label>
+          <input type="number" class="form-control" id="productPrice" name="productPrice" step="0.01" required formControlName="productPrice">
+          <div *ngIf="editForm.get('productPrice')?.hasError('required')" class="text-danger">Product Price is required</div>
+      </div>
+      <div class="mb-3">
+          <label for="productQuantity" class="form-label">Product Quantity</label>
+          <input type="number" class="form-control" id="productQuantity" name="productQuantity" required formControlName="productQuantity">
+          <div *ngIf="editForm.get('productQuantity')?.hasError('required')" class="text-danger">Product Quantity is required</div>
+      </div>
+      <div class="mb-3">
+          <label for="productDiscount" class="form-label">Product Discount</label>
+          <input type="number" class="form-control" id="productDiscount" name="productDiscount" step="0.01" formControlName="productDiscount">
+      </div>
+      <div class="mb-3">
+          <label for="productImage" class="form-label">Product Image URL</label>
+          <input type="url" class="form-control" id="productImage" name="productImage" required formControlName="productImage">
+          <div *ngIf="editForm.get('productImage')?.hasError('required')" class="text-danger">Product Image URL is required</div>
+      </div>
+      <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="onSale" name="onSale" formControlName="onSale">
+          <label class="form-check-label" for="onSale">On Sale</label>
+      </div>
+      <button type="submit" class="btn btn-dark">Save Changes</button>
+  </form>
+</div>
